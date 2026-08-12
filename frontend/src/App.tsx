@@ -212,6 +212,17 @@ export default function App() {
     abortRef.current?.abort();
   };
 
+  // 新会话：清空本地消息与 AG-UI 映射，换一个新的 threadId。
+  // 后端 session 持久化在 SQLite，旧会话历史仍保留。
+  const newChat = () => {
+    abortRef.current?.abort();
+    setMessages([]);
+    msgMapRef.current = {};
+    toolMapRef.current = {};
+    currentRef.current = null;
+    threadIdRef.current = newThreadId();
+  };
+
   const onKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -224,19 +235,25 @@ export default function App() {
       <header className="app-header">
         <div className="brand">
           <span className="brand-dot" />
-          <h1>Pro-Me</h1>
+          <h1>trpc-agent-lab</h1>
         </div>
-        <span className="app-subtitle">DeepSeek Agent · trpc-agent-go</span>
+        <div className="header-right">
+          <span className="app-subtitle">DeepSeek Agent · trpc-agent-go</span>
+          <button className="btn ghost" onClick={newChat} disabled={busy}>
+            新会话
+          </button>
+        </div>
       </header>
 
       <main className="chat">
         {messages.length === 0 && (
           <div className="empty">
             <p className="empty-title">你好，我是 DeepSeek Agent 👋</p>
-            <p>我会调用工具来回答你。试试：</p>
+            <p>我有记忆、技能、workspace、多 Agent 编排等能力。试试：</p>
             <p className="empty-hint">
-              <em>计算 (12 + 34) × 5</em>
-              <em>纽约现在是几点？</em>
+              <em>记住我喜欢喝美式咖啡</em>
+              <em>用 python-math 技能算斐波那契数列</em>
+              <em>帮我写一个 Go 的 HTTP server</em>
             </p>
           </div>
         )}

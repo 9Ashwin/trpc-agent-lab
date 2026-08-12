@@ -39,6 +39,12 @@
   color: var(--muted);
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .chat {
   flex: 1;
   overflow-y: auto;
@@ -263,4 +269,18 @@
 
 .btn.stop {
   background: #b3403f;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 0 14px;
+  height: 32px;
+  font-size: 13px;
+}
+
+.btn.ghost:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
