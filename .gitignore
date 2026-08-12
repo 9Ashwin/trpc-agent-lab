@@ -3,6 +3,9 @@ node_modules/
 dist/
 backend/backend
 
+# 运行时数据（SQLite 会话/记忆库、workspace 产物）
+backend/data/
+
 # 敏感信息
 .env
 backend/.env

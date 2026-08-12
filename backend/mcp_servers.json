@@ -1,0 +1,7 @@
+[
+  {
+    "transport": "streamable_http",
+    "server_url": "http://100.72.237.54:8000/mcp",
+    "description": "im-toolbox：微信聊天记录、联系人、图片、语音等数据查询"
+  }
+]
