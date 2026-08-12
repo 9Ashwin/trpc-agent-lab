@@ -1,0 +1,13 @@
+# 依赖与构建产物
+node_modules/
+dist/
+backend/backend
+
+# 敏感信息
+.env
+backend/.env
+
+# 编辑器/系统
+.idea/
+.DS_Store
+*.log
